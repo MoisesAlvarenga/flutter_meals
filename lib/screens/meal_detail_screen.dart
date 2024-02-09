@@ -6,7 +6,7 @@ class MealDeetailScreen extends StatelessWidget {
 
   Widget _createSectionTitle(BuildContext context, String title) {
     return Container(
-      margin: const EdgeInsets.symmetric(vertical: 10),
+      margin: const EdgeInsets.symmetric(vertical: 5),
       child: Text(
         title,
         style: Theme.of(context).textTheme.titleLarge,
@@ -16,7 +16,7 @@ class MealDeetailScreen extends StatelessWidget {
 
   Widget _createSectionContainer(Widget child) {
     return Container(
-        width: 300,
+        width: 360,
         height: 200,
         padding: const EdgeInsets.all(10),
         margin: const EdgeInsets.all(10),
@@ -65,10 +65,16 @@ class MealDeetailScreen extends StatelessWidget {
           _createSectionContainer(ListView.builder(
               itemCount: meal.steps.length,
               itemBuilder: (ctx, index) {
-                return ListTile(
-                  leading: CircleAvatar(
-                    child: Text('${index + 1}'),
-                  ),
+                return Column(
+                  children: [
+                    ListTile(
+                      leading: CircleAvatar(
+                        child: Text('${index + 1}'),
+                      ),
+                      title: Text(meal.steps[index]),
+                    ),
+                    const Divider(),
+                  ],
                 );
               })),
         ]),
