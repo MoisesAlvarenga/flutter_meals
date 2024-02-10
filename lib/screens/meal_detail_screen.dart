@@ -70,6 +70,7 @@ class MealDeetailScreen extends StatelessWidget {
                     ListTile(
                       leading: CircleAvatar(
                         child: Text('${index + 1}'),
+                        backgroundColor: Theme.of(context).colorScheme.primary,
                       ),
                       title: Text(meal.steps[index]),
                     ),
@@ -78,6 +79,12 @@ class MealDeetailScreen extends StatelessWidget {
                 );
               })),
         ]),
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.star),
+        onPressed: () {
+          Navigator.of(context).pop(meal.title);
+        },
       ),
     );
   }
