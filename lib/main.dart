@@ -17,7 +17,9 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  Settings settings = Settings();
   List<Meal> _availableMeals = dummyMeals;
+  List<Meal> _favoriteMeals = [];
 
   void _filterMeals(Settings settings) {
     setState(() {
@@ -58,7 +60,7 @@ class _MyAppState extends State<MyApp> {
         AppRoutes.categoriesMeals: (ctx) =>
             CategoriesMealsScreen(_availableMeals),
         AppRoutes.mealDetail: (ctx) => MealDeetailScreen(),
-        AppRoutes.settings: (ctx) => SettingsScreen(_filterMeals),
+        AppRoutes.settings: (ctx) => SettingsScreen(settings, _filterMeals),
       },
       onUnknownRoute: (settings) {
         return MaterialPageRoute(builder: (_) {
